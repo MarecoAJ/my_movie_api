@@ -32,10 +32,7 @@ pip install -r requirements.txt
 ```sh
 uvicorn main:app --reload
 ```
-# docker
+# elegir puerto y en red 
 ```sh
-docker-compose up -d
-docker-compose exec app-csv bash
-python3 main.py
-exit
+uvicorn main:app --reload --port 8000 --host 0.0.0.0
 ```
