@@ -13,6 +13,14 @@ movies = [
         "year": "2009",
         "rating": 7.8,
         "category": "accion"
+    },
+    {
+        "id": 2,
+        "title": "avatar",
+        "overview": "",
+        "year": "2009",
+        "rating": 7.8,
+        "category": "accion"
     }
 ]
 
@@ -23,3 +31,14 @@ def message():
 @app.get("/movies", tags=["movies"])
 def get_movies():
     return movies
+
+@app.get("/movies/{id}", tags=["movies"])
+def get_movie(id: int):
+    for item in movies:
+        if item["id"] == id:
+            return item
+    return []
+
+@app.get("/movies/", tags=["movies"])
+def get_movies_by_category(category: str):
+    return list(filter(lambda item: item['category'] == category , movies))
