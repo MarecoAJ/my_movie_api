@@ -6,10 +6,14 @@ from typing import Optional, List
 from starlette.requests import Request
 from jwt_manager import create_token, validate_token
 from fastapi.security import HTTPBearer
+from config.database import Session, engine, Base
+from modelos.movie import Movie
 
 app = FastAPI()
 app.title = "mi app fastAPI"
 app.version = "0.0.1"
+
+Base.metadata.create_all(bind = engine)
 
 class JWTBearer(HTTPBearer):
     async def __call__(self, request: Request):

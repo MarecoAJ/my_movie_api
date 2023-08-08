@@ -34,5 +34,5 @@ uvicorn main:app --reload
 ```
 # elegir puerto y en red 
 ```sh
-uvicorn main:app --reload --port 8000 --host 0.0.0.0
+uvicorn main:app --reload --port 5000 --host 0.0.0.0
 ```
