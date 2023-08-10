@@ -8,6 +8,6 @@ class ErrorHandler(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next) -> Response | JSONResponse:
         try:
-            return await call_next(Request)
+            return await call_next(request)
         except Exception as e:
             return JSONResponse(status_code=500, content={"error": str(e)})
